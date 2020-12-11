@@ -9,6 +9,7 @@ public class Questions {
         correctAns = new short[20];
         textsAns = new String[20][4];
         numRound = 0;
+        stream = new Reader();
     }
 
     public void nextRound() {
@@ -31,9 +32,12 @@ public class Questions {
         return textsAns[numRound];
     }
 
+    public boolean isFatalError() throws IOException {
+        return !stream.catchFatalErrors().isEmpty();
+    }
+
     public final ArrayList<String> getErrorFiles() throws IOException {
         ArrayList<String> errorFiles;
-        Reader stream = new Reader();
         if ((errorFiles = stream.catchErrors()).isEmpty()) {
             if ((errorFiles = stream.catchFatalErrors()).isEmpty()) {
                 stream.read(quests, textsAns, correctAns);
@@ -46,4 +50,5 @@ public class Questions {
     private final short[] correctAns;
     private final String[][] textsAns;
     private short numRound;
+    private final Reader stream;
 }

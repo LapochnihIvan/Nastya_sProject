@@ -73,27 +73,24 @@ public class GUI {
         }
     }
 
-    public boolean createErrorWindow(ArrayList<String> errorFiles) {
-        boolean result = true;
-        if (errorFiles.isEmpty()) result = false;
-        else {
-            short halfOfScreenWidth = (short) (screenSize.width / 2);
-            short halfOfScreenHeight = (short) (screenSize.height / 2);
-            frame.setSize(halfOfScreenWidth / 3, halfOfScreenHeight / 4);
-            frame.setLocation(5 * halfOfScreenWidth / 6, 7 * halfOfScreenHeight / 8);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            StringBuilder text = new StringBuilder("<html><p>В этих файлах не достаёт данных:</p>");
-            for (String emptyFile : errorFiles) {
-                text.append("<p>").append(emptyFile).append("</p>");
-            }
-            text.append("</html>");
-            label.setText(text.toString());
-            label.setForeground(Color.RED);
-            mainPanel.add(label);
-            frame.add(mainPanel);
-            frame.setVisible(true);
+    public void createErrorWindow(ArrayList<String> errorFiles, boolean fatalError) {
+        short halfOfScreenWidth = (short) (screenSize.width / 2);
+        short halfOfScreenHeight = (short) (screenSize.height / 2);
+        frame.setSize(halfOfScreenWidth / 3, halfOfScreenHeight / 4);
+        frame.setLocation(5 * halfOfScreenWidth / 6, 7 * halfOfScreenHeight / 8);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        StringBuilder text = new StringBuilder();
+        if (fatalError) text.append("<html><p>Не удалось создать файлы:</p>");
+        else text.append("<html><p>В этих файлах не достаёт данных:</p>");
+        for (String emptyFile : errorFiles) {
+            text.append("<p>").append(emptyFile).append("</p>");
         }
-        return result;
+        text.append("</html>");
+        label.setText(text.toString());
+        label.setForeground(Color.RED);
+        mainPanel.add(label);
+        frame.add(mainPanel);
+        frame.setVisible(true);
     }
 
     private final JFrame frame;
