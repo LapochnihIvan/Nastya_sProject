@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Reader {
     public Reader() {
         filesNames = new String[]{"input/quests.in.txt",
-                                  "input/textsAns.in.txt",
-                                  "input/correctAns.in.txt"};
+                "input/textsAns.in.txt",
+                "input/correctAns.in.txt"};
     }
 
     public void read(final String[] quests, final String[][] textsAns, final short[] correctAns) throws IOException {
@@ -32,7 +32,7 @@ public class Reader {
 
     public final ArrayList<String> catchFatalErrors() throws IOException {
         final ArrayList<String> errorFiles = new ArrayList<>();
-        File file = new File("input/");
+        file = new File("input/");
         if (!file.exists()) {
             if (!file.mkdirs()) {
                 errorFiles.add("input/");
@@ -50,12 +50,8 @@ public class Reader {
 
     public final ArrayList<String> catchErrors() throws IOException {
         final ArrayList<String> errorFiles = new ArrayList<>();
-        File file;
         for (String fileName : filesNames) {
             file = new File(fileName);
-            if (!file.exists()) {
-                if (!file.createNewFile()) System.exit(0);
-            }
             reader = new BufferedReader(new FileReader(file));
             short numLn = 0;
             while (reader.readLine() != null) numLn++;
@@ -65,5 +61,6 @@ public class Reader {
     }
 
     private BufferedReader reader;
+    private File file;
     private final String[] filesNames;
 }

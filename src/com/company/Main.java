@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 class Main {
     public static void main(String[] args) throws IOException {
-        final Main main = new Main();
-        main.process();
+        new Main().process();
     }
 
     private final GUI gui;

@@ -38,8 +38,8 @@ public class Questions {
 
     public final ArrayList<String> getErrorFiles() throws IOException {
         ArrayList<String> errorFiles;
-        if ((errorFiles = stream.catchErrors()).isEmpty()) {
-            if ((errorFiles = stream.catchFatalErrors()).isEmpty()) {
+        if ((errorFiles = stream.catchFatalErrors()).isEmpty()) {
+            if ((errorFiles = stream.catchErrors()).isEmpty()) {
                 stream.read(quests, textsAns, correctAns);
             }
         }
