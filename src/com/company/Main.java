@@ -23,13 +23,13 @@ class Main {
             gui.generation();
             gui.setQuestFrame(questions.getQuest(), questions.getTextsAns());
             while (!questions.isEmpty()) {
-                gui.setQuestFrame(questions.getQuest(), questions.getTextsAns());
                 if (gui.getResponse() == questions.getCorrectAns()) {
+                    if (questions.isEmpty()) gui.endOfQuiz();
+                    else gui.setQuestFrame(questions.getQuest(), questions.getTextsAns());
                     questions.nextRound();
                 }
                 else gui.wrongAns();
             }
-            gui.endOfQuiz();
         }
         else gui.createErrorWindow(errorFiles, questions.isFatalError());
     }
