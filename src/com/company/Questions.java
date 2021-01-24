@@ -16,9 +16,6 @@ public class Questions {
         numRound++;
     }
 
-    public boolean isEmpty() {
-        return numRound == 20;
-    }
 
     public String getQuest() {
         return quests[numRound];
@@ -28,6 +25,9 @@ public class Questions {
         return correctAns[numRound];
     }
 
+    public boolean isEmpty() {
+        return numRound == 20;
+    }
     public String[] getTextsAns() {
         return textsAns[numRound];
     }

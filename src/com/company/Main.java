@@ -24,9 +24,9 @@ class Main {
             gui.setQuestFrame(questions.getQuest(), questions.getTextsAns());
             while (!questions.isEmpty()) {
                 if (gui.getResponse() == questions.getCorrectAns()) {
+                    questions.nextRound();
                     if (questions.isEmpty()) gui.endOfQuiz();
                     else gui.setQuestFrame(questions.getQuest(), questions.getTextsAns());
-                    questions.nextRound();
                 }
                 else gui.wrongAns();
             }

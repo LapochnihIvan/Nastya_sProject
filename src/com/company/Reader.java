@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Reader {
     public Reader() {
         filesNames = new String[]{"input/quests.in.txt",
-                "input/textsAns.in.txt",
-                "input/correctAns.in.txt"};
+                                  "input/textsAns.in.txt",
+                                  "input/correctAns.in.txt"};
     }
 
     public void read(final String[] quests, final String[][] textsAns, final short[] correctAns) throws IOException {
